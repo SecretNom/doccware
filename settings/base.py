@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'tailwind',
     'django_browser_reload',
+    'home',
+    'login'
     
 ]
 
@@ -87,7 +89,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'products.context_processor.purchase',
             ],
         },
     },

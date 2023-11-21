@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
+from decouple import config 
 import os
 
 
@@ -47,7 +47,6 @@ LOGOUT_REDIRECT_URL = '/'
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
-    'ckeditor',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -55,9 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'tailwind',
-    'theme',
     'django_browser_reload',
-    'import_export',
     
 ]
 
@@ -72,7 +69,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_browser_reload.middleware.BrowserReloadMiddleware',
     
     
 
@@ -145,11 +141,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     "home/static/",
-    
-    
-    
 
-]
+    ]
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -164,7 +157,7 @@ TAILWIND_APP_NAME = 'theme'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AUTH_USER_MODEL = 'login.User'
+# AUTH_USER_MODEL = 'login.User'
 
 JAZZMIN_SETTINGS = {
     'welcome_sign':'Bienvenido al sitio de administrador de Danex',
@@ -173,14 +166,4 @@ JAZZMIN_SETTINGS = {
     "site_header": "ADMIN",    
 }
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ['Bold', 'Italic', 'Underline'],
-            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-            ['Link', 'Unlink'],
-            ['RemoveFormat', 'Source']
-        ]
-    }
-}
+

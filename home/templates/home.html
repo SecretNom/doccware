@@ -13,7 +13,7 @@
     <div  class="grid grid-cols-[30%_70%] gap-3 ">
         <div class="flex flex-col justify-center">
             <div class="max-w-[200px] max-h-[200px] py-5">
-                <img src="https://w7.pngwing.com/pngs/515/1/png-transparent-twitter-logo-computer-icons-logo-twitter-icon-computer-wallpaper-monochrome-bird-thumbnail.png" alt="">
+                <img src="{%static 'image/Imagen de WhatsApp 2023-11-28 a las 13.57.15_78b74ee6.jpg' %}" alt="">
             </div>
 
             <div>
@@ -28,8 +28,16 @@
 
                 </div>
                 
+                
 
                     <div class="relative overflow-x-auto lg:max-w-[900px]">
+                        <form id="asignaturaForm">
+                            <select id="asignatura" name="asignatura" class="px-4 text-center  w-full text-white bg-gray-700 ">
+                                {% for asignatura in asignaturas %}
+                                    <option value="{{ asignatura.id }}">{{ asignatura.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </form>
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
@@ -40,7 +48,7 @@
                                         Nombre
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Especialidad
+                                        Asignatura/s
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Presente
@@ -48,61 +56,35 @@
                                     <th scope="col" class="px-6 py-3">
                                         Ausente
                                     </th>
+                                    <th scope="col" class="px-6 py-3"></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        11.111.111-1
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        Enrique Gonzales
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        Docente
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        27
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    
-                                </tr>
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        22.222.222-2
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        Jose Alfredo
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        Docente
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        26
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        2
-                                    </td>
-                                </tr>
-                                <tr class="bg-white dark:bg-gray-800">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        33.333.333-3
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        Fernando Martinez
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        Docente
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        28
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        0
-                                    </td>
-                                </tr>
+                            <tbody id="profesoresContainer">
+                                {% for teacher in teachers %}
+            <tr data-asignatura-ids="{% for asignatura in teacher.asignatura.all %}{{ asignatura.id }}{% if not forloop.last %},{% endif %}{% endfor %}" class="profesor bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ teacher.rut }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ teacher.name }}
+                </td>
+                <td class="px-6 py-4">
+                    {% for asignatura in teacher.asignatura.all %}
+                        {{ asignatura.name }}
+                        {% if not forloop.last %}, {% endif %}
+                    {% endfor %}  
+                </td>
+                <td class="px-6 py-4">
+                    {{ teacher.dias_presente }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ teacher.dias_ausente }}
+                </td>
+                <td>
+                    <input type="checkbox" class="profesorCheckbox" data-profesor-id="{{ teacher.id }}">
+                </td>
+            </tr>
+        {% endfor %}
                             </tbody>
                         </table>
                     </div>
@@ -110,20 +92,25 @@
                     <div class="pt-10 flex justify-between content-center items-center lg:max-w-[900px]">
                             <a href="{%url 'add' %}">
                                 <button type="button" class="button">
-                                    <span class="text-left ">Agregar Docente</span>
+                                    <span class="text-left">Agregar Docente</span>
                                     <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
                                 </button>
                             </a>
                             
                             
-                            <a href="{%url 'info' %}">
-                                <button class="button">
-                                    Editar Info
+                            
+                            <form id="profesorForm" method="POST" action="{% url 'info' 1 %}">
+                                {%csrf_token%}
+
+                                <input type="hidden" id="profesorId" name="profesorId" value="">
+                                <button  class="button" type="submit" id="verDetalles" disabled>
+                                    Ver Detalles
                                     <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
                                       <path clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" fill-rule="evenodd"></path>
                                     </svg>
-                                  </button>
-                            </a>
+                                </button>
+                            </form>
+
                             
                     </div>
 
@@ -131,5 +118,13 @@
         </div>
     </div>
 </section>
+
+
+
+
+{%endblock%}
+
+{%block javascript_js%}
+<script src="{%static 'js/select.js' %}"></script>
 
 {%endblock%}

@@ -1,0 +1,66 @@
+
+<div class="relative mt-4 flex flex-col bg-white rounded-lg p-4 shadow-sm">
+    <h2 class="text-[var(--primary-color)] font-semibold text-2xl">Agregar Licencia</h2>
+  <form action="" method="post" enctype="multipart/form-data" >
+    {%csrf_token %}
+    <div id="group__birth" class="form__group">
+        <div class="">
+            <label class="text-black font-medium text-lg lg:text-xl" for="date">Fecha de Licencia</label><span class="text-red-600 text-lg lg:text-xl">*</span>
+        </div>
+        <div class="mt-2 form__input-group">
+            <input type="date" name="date" id="date" class="input__form  block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm   max-md:text-sm max-md:leading-6">
+            <i class="validation__form-status fas fa-times-circle"></i>
+        </div>
+
+    </div>
+  
+    <div class="mt-4" id="group__imagen">
+        <div class="pb-2">
+            <label class="text-black font-medium text-lg lg:text-xl" for="imagen">Imagen</label><span class="text-red-600 text-lg lg:text-xl">*</span>
+        </div>
+
+        <div>
+            <div class="file-upload-form">
+                <label for="file" class="file-upload-label">
+                  <div class="file-upload-design">
+                    <svg viewBox="0 0 640 512" height="1em">
+                      <path
+                        d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                      ></path>
+                    </svg>
+                    <p>Drag and Drop</p>
+                    <p>or</p>
+                    <span class="browse-button">Browse file</span>
+                  </div>
+                  <input id="file" name="file" type="file"/>
+                </label>
+              </div>
+           
+        </div>
+
+    </div>
+
+    <button id="close_button" class="absolute bg-white rounded-full top-0 right-0 set-default">
+        <!--Boton para cerrar el form-->
+        <i class="fa-regular fa-circle-xmark fa-xl text-[--primary-color]"></i>
+   </button>
+
+   <div class="mt-4 max-sm:w-full flex justify-end">
+    <button id="btn_submit" class="cursor-pointer max-sm:w-full rounded-xl font-semibold overflow-hidden relative z-100 border border-slate-500 group px-8 py-2" type="submit">
+      <span class="relative z-10 text-blue-950 group-hover:text-white text-md lg:text-xl duration-500">Agregar Licencia</span>
+      <span class="absolute w-full h-full bg-slate-500 -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+      <span class="absolute w-full h-full bg-slate-500 -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+    </button>
+  </div>
+</form>
+      </div>
+
+    
+  
+   
+
+
+   
+
+  
+   

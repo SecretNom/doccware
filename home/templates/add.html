@@ -11,21 +11,23 @@
     <div class="container pt-20">
         <div class="form_area">
             <p class="title">Agregar Docente</p>
-            <form action="">
+            <form action="" method="POST">
+                {% csrf_token %}
                 <div class="form_group">
                     <label class="sub_title" for="name">Nombre Completo</label>
-                    <input placeholder="Ingrese el nombre" id="name" class="form_style" type="text">
+                    {{form.name}}
                 </div>
                 <div class="form_group">
                     <label class="sub_title" for="rut">Rut</label>
-                    <input placeholder="Ingrese el rut con (-)" id="rut" class="form_style" type="text">
+                    {{form.rut}}
                 </div>
                 <div class="form_group">
-                    <label class="sub_title" for="position">Cargo correspondiente</label>
-                    <input placeholder="Ingrese el cargo" id="position" class="form_style" type="text">
+                    <label class="sub_title" for="asignatura">Asignatura/s</label>
+                    {{form.asignatura}}
                 </div>
+
                 <div>
-                    <button class="btn">Aceptar</button>
+                    <button type="submit" class="btn">Aceptar</button>
                     
             </div>
     </form></div><a class="link" href="">

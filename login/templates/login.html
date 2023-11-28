@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block style_css%}
+<link rel="stylesheet" href="{%static 'css/login.css'%}" >
+
+{%endblock%}
+{% block content %}
+
+<section class="flex justify-center py-10">
+  <div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="login">
+				<form class="form [&>input]:input">
+          {%csrf_token%}
+					<label for="chk" aria-hidden="true">Log in</label>
+          <label for="username" class >Username</label>
+          {{form.username}}
+          <label for="password">Contraseña</label>
+          {{form.password}}
+					<button>Log in</button>
+				</form>
+			</div>
+
+      
+			</div>
+	</div>
+
+
+
+  
+</section>
+
+
+
+{% endblock %}

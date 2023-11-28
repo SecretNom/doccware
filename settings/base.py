@@ -142,6 +142,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     "home/static/",
+    "login/static/"
 
     ]
 
@@ -161,9 +162,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # AUTH_USER_MODEL = 'login.User'
 
 JAZZMIN_SETTINGS = {
-    'welcome_sign':'Bienvenido al sitio de administrador de Danex',
-    "site_title": "Danex",
-    "site_brand": "Admin Dandex",
+    'welcome_sign':'Bienvenido al sitio de administrador de Docware',
+    "site_title": "Docware",
+    "site_brand": "Admin Docware",
     "site_header": "ADMIN",    
 }
 

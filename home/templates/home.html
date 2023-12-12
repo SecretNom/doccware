@@ -101,7 +101,6 @@
                             
                             <form id="profesorForm" method="POST" action="{% url 'info' 1 %}">
                                 {%csrf_token%}
-
                                 <input type="hidden" id="profesorId" name="profesorId" value="">
                                 <button  class="button" type="submit" id="verDetalles" disabled>
                                     Ver Detalles
@@ -110,8 +109,6 @@
                                     </svg>
                                 </button>
                             </form>
-
-                            
                     </div>
 
             </div>

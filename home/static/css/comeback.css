@@ -1,6 +1,8 @@
 .cta {
     display: flex;
-    padding: 11px 33px;
+    align-content: center;
+    align-items: center;
+    padding: 11px 11px;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-size: 25px;
@@ -23,7 +25,6 @@
   
   .cta .second {
     transition: 0.5s;
-    margin-right: 0px;
   }
   
   .cta:hover  .second {
@@ -37,7 +38,7 @@
   
   .second {
     width: 20px;
-    margin-left: 30px;
+    margin-right: 30px;
     position: relative;
     top: 12%;
   }

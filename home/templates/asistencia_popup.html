@@ -1,0 +1,48 @@
+<div class="relative mt-4 flex flex-col bg-white rounded-lg p-4 shadow-sm">
+    <h2 class="text-[var(--primary-color)] font-semibold text-2xl pb-4">Agregar Asistencia</h2>
+  <form action="" method="post">
+    {%csrf_token %}
+    <div id="group__birth" class="form__group">
+        <div class="">
+            <label class="text-black font-medium text-lg lg:text-xl" for="date">Fecha de Asistencia</label><span class="text-red-600 text-lg lg:text-xl">*</span>
+        </div>
+        <div class="mt-2 form__input-group">
+            <input type="date" name="asistencia_date" id="date" class="input__form  block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm   max-md:text-sm max-md:leading-6">
+            <i class="validation__form-status fas fa-times-circle"></i>
+        </div>
+
+    </div>
+  
+    <div class="mt-4 " id="group__select">
+      <div class="pb-2 flex flex-col">
+          <label class="text-black font-medium text-lg lg:text-xl" for="ausente">Ausente <span class="text-red-600 text-lg lg:text-xl">*</span></label>
+          <select id="estado" name="asistencia" onchange="mostrarOcultarSelect()">
+              <option value="presente">Presente</option>
+              <option value="ausente">Ausente</option>
+          </select>
+      </div>
+  
+      <div id="select__dias_administrativos" class=" flex-col" style="display: none;">
+          <label class="text-black font-medium text-lg lg:text-xl" for="dias_administrativos">Días Administrativos</label>
+          <select name="admin_days" id="dias_administrativos" class="px-2"  onchange="mostrarOcultarP()">
+              <option value="si">Sí</option>
+              <option value="no">No</option>
+          </select>
+          <p id="text-da" style="display: none;">En caso de tener licencia, debe pedir la licencia y agregarla en el apartado licencia</p>
+      </div>
+  </div>
+
+    <button id="closeasistencia_button" class="absolute bg-white rounded-full top-0 right-0 set-default">
+        <!--Boton para cerrar el form-->
+        <i class="fa-regular fa-circle-xmark fa-xl text-[--primary-color]"></i>
+   </button>
+
+   <div class="mt-4 max-sm:w-full flex justify-end">
+    <button id="btn_submit" name="form_asistencia" class="cursor-pointer max-sm:w-full rounded-xl font-semibold overflow-hidden relative z-100 border border-slate-500 group px-8 py-2" type="submit">
+      <span class="relative z-10 text-blue-950 group-hover:text-white text-md lg:text-xl duration-500">Agregar Licencia</span>
+      <span class="absolute w-full h-full bg-slate-500 -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+      <span class="absolute w-full h-full bg-slate-500 -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+    </button>
+  </div>
+</form>
+</div>

@@ -10,17 +10,19 @@
   <div class="main">  	
 		<input type="checkbox" id="chk" aria-hidden="true">
 
-			<div class="login">
-				<form class="form [&>input]:input">
-          {%csrf_token%}
-					<label for="chk" aria-hidden="true">Log in</label>
-          <label for="username" class >Username</label>
-          {{form.username}}
-          <label for="password">Contraseña</label>
-          {{form.password}}
-					<button>Log in</button>
-				</form>
-			</div>
+		<div class="login">
+			<form method="post" class="form [&>input]:input">
+				{% csrf_token %}
+				<label for="chk" aria-hidden="true">Log in</label>
+				<label for="username">Username</label>
+				{{ form.username }}
+				{{ form.username.errors }}
+				<label for="password">Contraseña</label>
+				{{ form.password }}
+				{{ form.password.errors }}
+				<button type="submit">Log in</button>
+			</form>
+		</div>
 
       
 			</div>

@@ -40,6 +40,9 @@ def add(request):
 def info(request, teacher_id):
     success_asistencia=False
     porcentaje_dp = 0
+    porcentaje_da=0
+    porcentaje_dl=0
+    porcentaje_dausente=0
     teacher = get_object_or_404(Teacher, id=teacher_id)
     licencias = Licencia.objects.filter(id=teacher.id).count()
     total_dias = teacher.dias_presente + teacher.dias_ausente
